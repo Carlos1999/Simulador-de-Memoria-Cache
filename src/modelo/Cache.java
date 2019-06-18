@@ -43,7 +43,7 @@ public class Cache {
 		for (Entry<Integer, Bloco> pair : linhas.entrySet()) {
 			Bloco b = pair.getValue();
 			if (b.getNumeroBloco() == valorBloco) {
-				System.out.println("HIT linha " + b.getNumeroBloco());
+				System.out.println("HIT linha " + b.getNumeroBloco()%quantidadeLinhas);
 				b.setContador(b.getContador()+1);
 				return;
 			}
@@ -53,9 +53,9 @@ public class Cache {
 			System.out.print("MISS _> Alocado na linha " + valorBloco % quantidadeLinhas);
 			if (linhas.get(valorBloco % quantidadeLinhas) != null) {
 				if(linhas.get(valorBloco % quantidadeLinhas).getNumeroBloco()!=-1) {
-					System.out.println(" _> Bloco " + linhas.get(valorBloco % quantidadeLinhas).getNumeroBloco());
+					System.out.println(" _> Bloco " + linhas.get(valorBloco % quantidadeLinhas).getNumeroBloco()+" substituido");
 				}else {
-					
+					System.out.println();
 				}
 			}
 			linhas.replace(valorBloco % quantidadeLinhas, memoriaPrincipal.get(valorBloco));
@@ -122,7 +122,7 @@ public class Cache {
 			Bloco b = pair.getValue();
 			if (b.getNumeroBloco() == valorBloco) {
 				System.out.println(
-						"HIT linha " + b.getNumeroBloco() + " -> novo valor endereco " + endereco + "=" + conteudo);
+						"HIT linha " + b.getNumeroBloco()%quantidadeLinhas + " -> novo valor endereco " + endereco + "=" + conteudo);
 				b.setContador(b.getContador()+1);
 				b.addPalavra(endereco, new Dado(endereco, conteudo));
 				return;
@@ -143,7 +143,7 @@ public class Cache {
 			if (linhas.get(valorBloco % quantidadeLinhas).getNumeroBloco() == -1) {
 
 			} else {
-				memoriaPrincipal.replace(valorBloco, linhas.get(valorBloco % quantidadeLinhas));
+				memoriaPrincipal.replace(linhas.get(valorBloco % quantidadeLinhas).getNumeroBloco(), linhas.get(valorBloco % quantidadeLinhas));
 			}
 
 			linhas.replace(valorBloco % quantidadeLinhas, memoriaPrincipal.get(valorBloco));
@@ -238,7 +238,7 @@ public class Cache {
 		System.out.println();
 		System.out.println("--------------------------------------------");
 		System.out.println("CACHE L1");
-		System.out.println("Linha - Bloco - Endereço - Conteúdo");
+		System.out.println("Linha - Bloco - Endereï¿½o - Conteï¿½do");
 		for (Entry<Integer, Bloco> pairLinhas : linhas.entrySet()) {
 			Bloco bloco = pairLinhas.getValue();
 			for (Entry<Integer, Dado> pairPalavras : bloco.getPalavras().entrySet()) {
@@ -249,7 +249,7 @@ public class Cache {
 		}
 
 		System.out.println("MEMORIA PRINCIPAL");
-		System.out.println("Bloco - Endereço - Conteúdo");
+		System.out.println("Bloco - Endereï¿½o - Conteï¿½do");
 		for (Entry<Integer, Bloco> pairMemoria : memoriaPrincipal.entrySet()) {
 			Bloco bloco = pairMemoria.getValue();
 			for (Entry<Integer, Dado> pairPalavras : bloco.getPalavras().entrySet()) {

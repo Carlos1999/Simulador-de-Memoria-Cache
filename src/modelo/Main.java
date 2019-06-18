@@ -4,25 +4,23 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Cache c = new Cache(4,8,16,1,2,3);
-		c.escrever(2,41);
-		c.escrever(3,41);
-		c.escrever(1,41);
-		c.escrever(15,41);
-		c.escrever(21,41);
-		c.escrever(13,41);
-		c.escrever(9,41);
-		c.escrever(20,41);
-		c.escrever(7,41);
-		c.escrever(17,41);
-		c.escrever(1,41);
-		c.escrever(2,41);
-		c.escrever(22,41);
-		c.escrever(14,41);
-		c.escrever(6,41);
-		c.escrever(1,41);
-		c.ler(25);
-		c.ler(28);
+		Cache c = new Cache(4,4,16,1,2,3);
+		c.ler(2);
+		c.ler(3);
+		c.ler(1);
+		c.ler(15);
+		c.ler(21);
+		c.ler(13);
+		c.ler(9);
+		c.ler(20);
+		c.ler(7);
+		c.ler(17);
+		c.ler(1);
+		c.ler(2);
+		c.ler(22);
+		c.ler(14);
+		c.ler(6);
+		c.ler(1);	
 		
 		c.show();
 	}
